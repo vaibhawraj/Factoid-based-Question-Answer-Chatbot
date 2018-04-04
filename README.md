@@ -17,12 +17,79 @@ For example:
 
 Once bot is up and start running, it will ask you to enter your question. And respond with answer.
 
-## DATASET
+## METHODOLOGY
 
+Architecture of this bot closely follow the architecture described in the book. Main modules of the QA System are:
+
+> **Question Processing** : In this step, bot identifies type of question and
+	type of answer it expects
+
+> **Passage Retrieval** : It generates question vector and vectors of passage
+	using TF-IDF as feature, it computes cosine similarity between question 
+	vector and passage vector returning top 3 closely resembling passage. Furthur
+	improvement to this step has been done by removing Stop Words and using 
+	Porter Stemmer
+
+> **Sentence Retrieval** : After retrieving passage, it tokenize sentences and
+	computes ngram similarity between question and sentence. Thus identifying 
+	most relevant sentences. 
+
+> **Answer Processing** : Based on the expected answer type, then it process
+	the answer sentence to identify particular entity using name-entity
+	recognization technique and part of speech tagging technique
+
+> **Text summarization** : If type of question is definition or bot is unable
+	to identify named-entity from question, it summarize the text using ngram
+	tilting technique
+
+## RUNNING THE TEST
+
+Test script is included in this repository. Test script uses **Stanford Question Answer Dataset (SQuAD)** to ask question and match bot's answer with human tagged answer.
+
+```sh
+$ python3 testQA.py
+```
+
+Test script outputs the no of question and correct retrieval of the answer. And match this answer with what was tagged by human. It computes the accuracy of the QA answer prediction and stores final result in "accuracy.csv" 
+
+Accuracy of prediction is defined by:
+
+```python
+		accuracy = No. of correct prediction/No. of Total Prediction
+```
+
+## RESULT
+
+### Result of Passage Retrieval
+Accuracy of passage retrieval using TF-IDF was **69.69%** when tested over 422 articles of SQuAD dataset and approx 87599 questions cross domain.
+
+After removing stopwords and using Porter Stemmer, this accuracy parameter improved to **77.49%**.
+
+On Further analysis, **94.23%** of passage retrieval contains the equivalant  paragraph in top 3 returned paragraph.
+
+## Result of Question Answer System
+
+Overall Average over entire dataset was **64% correct answer prediction**. Dataset included in this repository has following accuracy:
+
+| Dataset Name      | No of Question 	| No of Correct Answer | Accuracy
+--------------------|-------------------|----------------------|----------
+New_York_City		| 817		| 513			| 62.79
+Buddhism			| 610				| 428				   | 70.16
+Queen_Victoria		| 680				| 378				   | 55.59
+Modern_history		| 448				| 325				   | 72.54
+Windows_8			| 202				| 148				   | 73.27
+USB					| 235				| 208				   | 88.51
+Marvel_Comics		| 123				| 77	               | 62.6
+Mammal				| 88				| 59	               | 67.05
+Alloy				| 96				| 65	               | 67.71
+Rajasthan			| 119				| 82	               | 68.91
+Anthropology		| 222				| 178	               | 80.18
+
+
+## DATASET
 
 Bot is able to perform cross domain. This submission includes following dataset and sample question asked from the article. One can furthur ask question by reading article and asking factoid or complex question.
 
-## Dataset included in this repository
 #### Marvel Comics (dataset/Marvel_Comics.txt)
 Sample Questions:
 > What Marvel character's stories are set in an area resembling the American Southwest?
@@ -166,74 +233,6 @@ Sample Questions
 > How many devices may be connected to a host controller?
 
 > A USB connection is based on what?
-
-## METHODOLOGY
-
-Architecture of this bot closely follow the architecture described in the book. Main modules of the QA System are:
-
-> **Question Processing** : In this step, bot identifies type of question and
-	type of answer it expects
-
-> **Passage Retrieval** : It generates question vector and vectors of passage
-	using TF-IDF as feature, it computes cosine similarity between question 
-	vector and passage vector returning top 3 closely resembling passage. Furthur
-	improvement to this step has been done by removing Stop Words and using 
-	Porter Stemmer
-
-> **Sentence Retrieval** : After retrieving passage, it tokenize sentences and
-	computes ngram similarity between question and sentence. Thus identifying 
-	most relevant sentences. 
-
-> **Answer Processing** : Based on the expected answer type, then it process
-	the answer sentence to identify particular entity using name-entity
-	recognization technique and part of speech tagging technique
-
-> **Text summarization** : If type of question is definition or bot is unable
-	to identify named-entity from question, it summarize the text using ngram
-	tilting technique
-
-## RUNNING THE TEST
-
-Test script is included in this repository. Test script uses **Stanford Question Answer Dataset (SQuAD)** to ask question and match bot's answer with human tagged answer.
-
-```sh
-$ python3 testQA.py
-```
-
-Test script outputs the no of question and correct retrieval of the answer. And match this answer with what was tagged by human. It computes the accuracy of the QA answer prediction and stores final result in "accuracy.csv" 
-
-Accuracy of prediction is defined by:
-
-```python
-		accuracy = No. of correct prediction/No. of Total Prediction
-```
-
-## RESULT
-
-### Result of Passage Retrieval
-Accuracy of passage retrieval using TF-IDF was **69.69%** when tested over 422 articles of SQuAD dataset and approx 87599 questions cross domain.
-
-After removing stopwords and using Porter Stemmer, this accuracy parameter improved to **77.49%**.
-
-On Further analysis, **94.23%** of passage retrieval contains the equivalant  paragraph in top 3 returned paragraph.
-
-## Result of Question Answer System
-
-Overall Average over entire dataset was **64% correct answer prediction**. Dataset included in this repository has following accuracy:
-
-| Dataset Name    	| No of Question 	| No of Correct Answer | Accuracy
---------------------|-------------------|----------------------|----------
-New_York_City		| 817				| 513				   | 62.79
-Buddhism			| 610				| 428				   | 70.16
-Queen_Victoria		| 680				| 378				   | 55.59
-Modern_history		| 448				| 325				   | 72.54
-Windows_8			| 202				| 148				   | 73.27
-USB					| 235				| 208				   | 88.51
-Marvel_Comics		| 123				| 77	               | 62.6
-Mammal				| 88				| 59	               | 67.05
-Alloy				| 96				| 65	               | 67.71
-Rajasthan			| 119				| 82	               | 68.91
-Anthropology		| 222				| 178	               | 80.18
 
 
 ## REFERENCE
