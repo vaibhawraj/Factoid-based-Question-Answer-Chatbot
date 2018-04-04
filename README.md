@@ -27,13 +27,13 @@ Bot is able to perform cross domain. This submission includes following dataset 
 #### Marvel Comics (dataset/Marvel_Comics.txt)
 Sample Questions:
 > What Marvel character's stories are set in an area resembling the American Southwest?
-Who originally founded Marvel Comics?
-When was Marvel founded?
-Who was Marvel's first true full-time editor?
-Who co-created Captain America?
-Besides Simon, who co-created Captain America?
-What two real life persons were also part of the magazine feature alongside fictional Marvel characters?
-Who took over as head of Marvel in 1978?
+> Who originally founded Marvel Comics?
+> When was Marvel founded?
+> Who was Marvel's first true full-time editor?
+> Who co-created Captain America?
+> Besides Simon, who co-created Captain America?
+> What two real life persons were also part of the magazine feature alongside fictional Marvel characters?
+> Who took over as head of Marvel in 1978?
 
 #### Mammal (dataset/Mammal.txt)
 Sample Questions:
