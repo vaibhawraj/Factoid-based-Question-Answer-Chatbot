@@ -1,7 +1,7 @@
 # FACTOID QUESTION ANSWERING CHATBOT
 
 
-Simple Question Answering Chatbot is a simpler version of question answering system. It answers to the question asked by user in near real time using information retrieval and natural language processing technique. Chatbot is able to answer Factoid and Summarization based question from article of various domains with an accuracy of 70.16% (measured on SQuAD dataset of stanford).
+Factoid Question Answering Chatbot is a simpler version of question answering system. It answers to the question asked by user in near real time using information retrieval and natural language processing technique. Chatbot is able to answer Factoid and Summarization based question from article of various domains with an accuracy of 70.16% (measured on SQuAD dataset of stanford).
 
 ## SYNOPSIS
 
