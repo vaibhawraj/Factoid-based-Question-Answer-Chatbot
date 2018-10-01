@@ -242,4 +242,4 @@ Sample Questions
 3.	The Stanford Question Answering Dataset: https://rajpurkar.github.io/SQuAD-explorer/
 4.	Amit Singhal, Steve Abney, Michiel Bacchiani, Michael Collins, Donald Hindle, Fernando Pereira AT&T at TREC-8 
 5.	FNU Budianto: Reading Comprehension on the SQuAD Dataset
-6.	Xin Li and Dan Roth: Learning Question Classifiers: The Role of Semantic Information
+6.	Xin Li and Dan Roth: Learning Question Classifiers: The Role of Semantic Information.
